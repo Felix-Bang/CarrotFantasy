@@ -20,7 +20,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace FelixPool
+namespace FelixFramework
 {
 	public class ObjectPool : MonoBehaviour
 	{
