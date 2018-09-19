@@ -1,4 +1,4 @@
-﻿//  Felix-Bang：Singleton
+﻿//  Felix-Bang：ReusableObject
 //　　 へ　　　　　／|
 //　　/＼7　　　 ∠＿/
 //　 /　│　　 ／　／
@@ -12,29 +12,19 @@
 //　 ヽ_ﾉ　　(_／　 │／／
 //　　7　　　　　　　|／
 //　　＞―r￣￣`ｰ―＿
-// Describe：单例模式
-// Createtime：2018/9/18
-
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace FelixFramework
+namespace FBFramework
 {
-	public abstract class Singleton<T> : MonoBehaviour
-        where T:MonoBehaviour
+	public abstract class ReusableObject : MonoBehaviour,IReusable
 	{
-        private static T f_instance=null;
-        public static T Inatance
-        {
-            get { return f_instance; }
-        }
-		
-		protected virtual void Awake()
-		{
-            f_instance = this as T;
-		}
+        public abstract void OnSpawn();
+
+        public abstract void OnUnspawn();
+        
 	}
 }
 

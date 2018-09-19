@@ -20,9 +20,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace FelixFramework
+namespace FBFramework
 {
-	public class ObjectPool : MonoBehaviour
+	public class ObjectPool : Singleton<ObjectPool>
 	{
         string f_resourceDir = "";
         Dictionary<string, SubPool> f_pools = new Dictionary<string, SubPool>();
