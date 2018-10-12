@@ -1,4 +1,4 @@
-﻿//  Felix-Bang：FBApplicationBase
+﻿//  Felix-Bang：FBEndLevelArgs
 //　　 へ　　　　　／|
 //　　/＼7　　　 ∠＿/
 //　 /　│　　 ／　／
@@ -12,30 +12,24 @@
 //　 ヽ_ﾉ　　(_／　 │／／
 //　　7　　　　　　　|／
 //　　＞―r￣￣`ｰ―＿
-// Describe：MVC框架启动的入口
-// Createtime：2018/9/19
+// Describe：结束关卡的事件参数
+// Createtime：2018/9/27
 
 
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace FBFramework
+namespace FBApplication
 {
-	public abstract class FBApplicationBase<T>:FBSingleton<T>
-        where T : MonoBehaviour
+	public class FBEndLevelArgs
     {
-
-        protected void RegisterController(string eventName, Type controllerType)
-        {
-            FBMVC.RegisterController(eventName, controllerType);
-        }
-
-        protected void SendEvent(string eventName,object data=null)
-        {
-            FBMVC.SendEvent(eventName,data);
-        }
-    }
+        /// <summary> 关卡索引 </summary>
+        public int ID { get; set; }
+        /// <summary>
+        /// 结束类型：闯关成功（true）/失败（false）
+        /// </summary>
+        public bool IsPassSuccess;
+	}
 }
 

@@ -24,8 +24,8 @@ namespace FBApplication
 {
 	public class FBStartLevelArgs
     {
-        /// <summary> 关卡索引 </summary>
-        public int Index { get; set; }
+        /// <summary> 关卡ID </summary>
+        public int ID { get; set; }
 	}
 }
 

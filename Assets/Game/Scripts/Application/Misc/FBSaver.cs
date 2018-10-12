@@ -1,4 +1,4 @@
-﻿//  Felix-Bang：FBExitSceneCommand
+﻿//  Felix-Bang：FBSaver
 //　　 へ　　　　　／|
 //　　/＼7　　　 ∠＿/
 //　 /　│　　 ／　／
@@ -12,22 +12,30 @@
 //　 ヽ_ﾉ　　(_／　 │／／
 //　　7　　　　　　　|／
 //　　＞―r￣￣`ｰ―＿
-// Describe：退出场景控制器
-// Createtime：2018/9/26
+// Describe：读档和存档
+// Createtime：2018/10/11
 
 
-using FBFramework;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace FBApplication
 {
-    public class FBExitSceneCommand : FBController
+	public static class FBSaver
 	{
-        public override void Execute(object data = null)
+        #region 方法
+        public static int GetProgress()
         {
-            
+            return PlayerPrefs.GetInt(FBConsts.GameProgress,-1);
+
         }
 
-     
+        public static void SetProgress(int levelIndex)
+        {
+            PlayerPrefs.SetInt(FBConsts.GameProgress, levelIndex);
+        }
+		#endregion
 	}
 }
 

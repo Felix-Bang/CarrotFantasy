@@ -12,7 +12,7 @@
 //　 ヽ_ﾉ　　(_／　 │／／
 //　　7　　　　　　　|／
 //　　＞―r￣￣`ｰ―＿
-// Describe：关卡
+// Describe：关卡数据
 // Createtime：2018/9/19
 
 
@@ -26,6 +26,8 @@ namespace FBApplication
 	{
         /// <summary> 名称 </summary>
         public string Name;
+        /// <summary> 卡片 </summary>
+        public string CardImage;
         /// <summary> 背景 </summary>
         public string Background;
         /// <summary> 地图 </summary>

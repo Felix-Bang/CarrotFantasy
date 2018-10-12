@@ -1,4 +1,4 @@
-﻿//  Felix-Bang：FBApplicationBase
+﻿//  Felix-Bang：FBLevelStartController
 //　　 へ　　　　　／|
 //　　/＼7　　　 ∠＿/
 //　 /　│　　 ／　／
@@ -12,30 +12,26 @@
 //　 ヽ_ﾉ　　(_／　 │／／
 //　　7　　　　　　　|／
 //　　＞―r￣￣`ｰ―＿
-// Describe：MVC框架启动的入口
-// Createtime：2018/9/19
+// Describe：开始关卡控制器
+// Createtime：
 
 
-using System;
+using FBFramework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace FBFramework
+namespace FBApplication
 {
-	public abstract class FBApplicationBase<T>:FBSingleton<T>
-        where T : MonoBehaviour
+	public class FBLevelStartController : FBController
     {
-
-        protected void RegisterController(string eventName, Type controllerType)
+        public override void Execute(object data = null)
         {
-            FBMVC.RegisterController(eventName, controllerType);
+            // 进入游戏
+            FBGame.Instance.LoadScene(3);
         }
 
-        protected void SendEvent(string eventName,object data=null)
-        {
-            FBMVC.SendEvent(eventName,data);
-        }
-    }
+     
+	}
 }
 

@@ -1,4 +1,4 @@
-﻿//  Felix-Bang：FBStartUpCommand
+﻿//  Felix-Bang：FBLevelEndController
 //　　 へ　　　　　／|
 //　　/＼7　　　 ∠＿/
 //　 /　│　　 ／　／
@@ -12,30 +12,25 @@
 //　 ヽ_ﾉ　　(_／　 │／／
 //　　7　　　　　　　|／
 //　　＞―r￣￣`ｰ―＿
-// Describe：启动游戏控制器
-// Createtime：2018/9/26
+// Describe：开始关卡控制器
+// Createtime：
 
 
+using FBFramework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using FBFramework;
 
 namespace FBApplication
 {
-    public class FBStartUpCommand : FBController
+	public class FBLevelEndController : FBController
     {
         public override void Execute(object data = null)
         {
-            //注册模型（Model）
-
-            //注册命令（Command）
-            RegisterController(FBConsts.E_EnterScene, typeof(FBEnterSceneCommand));
-            RegisterController(FBConsts.E_ExitScene, typeof(FBExitSceneCommand));
-
-            //进入开始界面
-            FBGame.Instance.LoadScene(1);
+            throw new System.NotImplementedException();
         }
-    }
+
+   
+	}
 }
 

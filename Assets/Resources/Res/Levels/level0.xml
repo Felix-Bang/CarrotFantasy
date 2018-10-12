@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Level>
 <Name>第一关：敌人来袭</Name>
+<CardImage>card0.png</CardImage>
 <Background>bg1.png</Background>
 <Road>road1.png</Road>
 <InitScore>10</InitScore>
 <Holder>
-<Point X="0" Y="1"/>
 <Point X="1" Y="1"/>
 <Point X="2" Y="1"/>
 <Point X="3" Y="1"/>
@@ -16,7 +16,6 @@
 <Point X="8" Y="1"/>
 <Point X="9" Y="1"/>
 <Point X="10" Y="1"/>
-<Point X="11" Y="1"/>
 <Point X="0" Y="2"/>
 <Point X="5" Y="2"/>
 <Point X="6" Y="2"/>
@@ -59,6 +58,11 @@
 <Point X="10" Y="5"/>
 </Path>
 <Rounds>
-<Round Monster="0" Count="10"/>
+  <Round Monster="0" Count="5"/>
+  <Round Monster="1" Count="8"/>
+  <Round Monster="2" Count="8"/>
+  <Round Monster="3" Count="10"/>
+  <Round Monster="4" Count="10"/>
+  <Round Monster="5" Count="1"/>
 </Rounds>
 </Level>

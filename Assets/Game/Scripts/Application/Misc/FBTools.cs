@@ -22,6 +22,7 @@ using System.IO;
 using System.Text;
 using System.Xml;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace FBApplication
 {
@@ -51,6 +52,7 @@ namespace FBApplication
             doc.Load(sr);
 
             level.Name = doc.SelectSingleNode("/Level/Name").InnerText;
+            level.CardImage = doc.SelectSingleNode("/Level/CardImage").InnerText;
             level.Background = doc.SelectSingleNode("/Level/Background").InnerText;
             level.Road = doc.SelectSingleNode("/Level/Road").InnerText;
             level.InitScore = int.Parse(doc.SelectSingleNode("/Level/InitScore").InnerText);
@@ -105,6 +107,7 @@ namespace FBApplication
             sb.AppendLine("<Level>");
 
             sb.AppendLine(string.Format("<Name>{0}</Name>", level.Name));
+            sb.AppendLine(string.Format("<CardImage>{0}</CardImage>", level.CardImage));
             sb.AppendLine(string.Format("<Background>{0}</Background>", level.Background));
             sb.AppendLine(string.Format("<Road>{0}</Road>", level.Road));
             sb.AppendLine(string.Format("<InitScore>{0}</InitScore>", level.InitScore));
@@ -154,6 +157,22 @@ namespace FBApplication
                 new Rect(0, 0, texture.width, texture.height),
                 new Vector2(0.5f, 0.5f));
             render.sprite = sp;
+        }
+
+        //加载图片
+        public static IEnumerator LoadImage(string url, Image image)
+        {
+            WWW www = new WWW(url);
+
+            while (!www.isDone)
+                yield return www;
+
+            Texture2D texture = www.texture;
+            Sprite sp = Sprite.Create(
+                texture,
+                new Rect(0, 0, texture.width, texture.height),
+                new Vector2(0.5f, 0.5f));
+            image.sprite = sp;
         }
     }
 }

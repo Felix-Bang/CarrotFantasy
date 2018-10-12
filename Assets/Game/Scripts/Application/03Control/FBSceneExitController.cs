@@ -1,4 +1,4 @@
-﻿//  Felix-Bang：FBEnd0LevelArgs
+﻿//  Felix-Bang：FBSceneExitController
 //　　 へ　　　　　／|
 //　　/＼7　　　 ∠＿/
 //　 /　│　　 ／　／
@@ -12,24 +12,22 @@
 //　 ヽ_ﾉ　　(_／　 │／／
 //　　7　　　　　　　|／
 //　　＞―r￣￣`ｰ―＿
-// Describe：结束关卡的事件参数
-// Createtime：2018/9/27
+// Describe：退出场景控制器
+// Createtime：2018/9/26
 
 
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using FBFramework;
 
 namespace FBApplication
 {
-	public class FBEnd0LevelArgs
-    {
-        /// <summary> 关卡索引 </summary>
-        public int Index { get; set; }
-        /// <summary>
-        /// 结束类型：闯关成功（true）/失败（false）
-        /// </summary>
-        public bool IsSuccess;
+    public class FBSceneExitController : FBController
+	{
+        public override void Execute(object data = null)
+        {
+            
+        }
+
+     
 	}
 }
 

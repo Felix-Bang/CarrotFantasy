@@ -1,4 +1,4 @@
-﻿//  Felix-Bang：FBUISelect
+﻿//  Felix-Bang：FBUILost
 //　　 へ　　　　　／|
 //　　/＼7　　　 ∠＿/
 //　 /　│　　 ／　／
@@ -12,19 +12,22 @@
 //　 ヽ_ﾉ　　(_／　 │／／
 //　　7　　　　　　　|／
 //　　＞―r￣￣`ｰ―＿
-// Describe：选择界面
-// Createtime：2018/9/27
+// Describe：关卡-失败
+// Createtime：2018/10/09
 
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FBFramework;
+using UnityEngine.UI;
+using System;
 
 namespace FBApplication
 {
-	public class FBUISelect : FBView
+	public class FBUILost : FBView
 	{
+
         #region 常量
         #endregion
 
@@ -32,6 +35,13 @@ namespace FBApplication
         #endregion
 
         #region 字段
+        [SerializeField]
+        private Text txtCurrent;
+        [SerializeField]
+        private Text txtTotal;
+        [SerializeField]
+        private Button btnRestart;
+    
         #endregion
 
         #region 属性
@@ -39,30 +49,25 @@ namespace FBApplication
         {
             get
             {
-                return FBConsts.V_Select;
+                 return FBConsts.V_Lost; 
             }
-        }
-        #endregion
-
-        #region 方法
-        public void GoBack()
-        {
-            FBGame.Instance.LoadScene(1);
-        }
-
-        public void ChooseLevel()
-        {
-            FBStartLevelArgs e = new FBStartLevelArgs
-            {
-                Index = 0
-            };
-
-            SendEvent(FBConsts.E_StartLevel, e);
         }
 
         #endregion
 
         #region Unity回调
+        private void Awake()
+        {
+            UpdatteRoundInfo(0,0);
+        }
+
+        private void Start()
+        {
+            btnRestart.onClick.AddListener(OnRestartClick);
+          
+        }
+
+       
         #endregion
 
         #region 事件回调
@@ -72,8 +77,36 @@ namespace FBApplication
         }
         #endregion
 
+        #region 方法
+        private void OnRestartClick()
+        {
+            throw new NotImplementedException();
+        }
+
+       
+
+        private void Show()
+        {
+            gameObject.SetActive(true);
+        }
+
+        private void Hide()
+        {
+            gameObject.SetActive(false);
+        }
+
+        private void UpdatteRoundInfo(int currentRound,int totalRound)
+        {
+            txtCurrent.text = currentRound.ToString("D2");
+            txtTotal.text = totalRound.ToString();
+        }
+
+        #endregion
+
         #region 帮助方法
         #endregion
+
+
 
 
 

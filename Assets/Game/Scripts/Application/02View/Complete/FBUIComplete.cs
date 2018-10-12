@@ -1,4 +1,4 @@
-﻿//  Felix-Bang：FBUICountDown
+﻿//  Felix-Bang：FBUIComplete
 //　　 へ　　　　　／|
 //　　/＼7　　　 ∠＿/
 //　 /　│　　 ／　／
@@ -12,8 +12,8 @@
 //　 ヽ_ﾉ　　(_／　 │／／
 //　　7　　　　　　　|／
 //　　＞―r￣￣`ｰ―＿
-// Describe：关卡-倒计时
-// Createtime：2018/9/28
+// Describe：通关
+// Createtime：2018/10/09
 
 
 using System.Collections;
@@ -25,91 +25,70 @@ using System;
 
 namespace FBApplication
 {
-	public class FBUICountDown : FBView
+	public class FBUIComplete : FBView
 	{
+
         #region 常量
         #endregion
 
         #region 事件
         #endregion
 
-        #region 字段
+        #region 
         [SerializeField]
-        private Image imgCount;
+        private Button btnRestart;
         [SerializeField]
-        private Sprite[] sptNumbers;
+        private Button btnClear;
         #endregion
 
         #region 属性
         public override string Name
         {
-            get { return FBConsts.V_CountDown; }
+            get
+            {
+                return FBConsts.V_Complete;
+            }
         }
+
         #endregion
 
         #region Unity回调
+     
+
         private void Start()
         {
+            
+            btnRestart.onClick.AddListener(OnRestartClick);
+            btnClear.onClick.AddListener(OnClearClick);
         }
+
+
+
         #endregion
 
         #region 事件回调
         public override void RegisterEvents()
         {
             base.RegisterEvents();
-            this.EventLists.Add(FBConsts.E_EnterScene);
         }
 
         public override void HandleEvent(string eventName, object data = null)
         {
-            switch (eventName)
-            {
-                case FBConsts.E_EnterScene:
-                    FBSceneArgs e = (FBSceneArgs)data;
-                    if (e.Index == 3)
-                        StartCountDown();
-                    break;
-                default:
-                    break;
-            }
+            
         }
         #endregion
 
         #region 方法
-        private void Show()
+
+        private void OnRestartClick()
         {
-            gameObject.SetActive(true);
+            FBGame.Instance.LoadScene(1);
         }
 
-        private void Hide()
+        private void OnClearClick()
         {
-            gameObject.SetActive(false);
+            Debug.Log("清空数据");
         }
-
-        private void StartCountDown()
-        {
-            Show();
-            StartCoroutine("DisplayCount");
-        }
-
-        IEnumerator DisplayCount()
-        {
-            int count = 3;
-            while (count > 0)
-            {
-                imgCount.sprite = sptNumbers[count - 1];
-                count--;
-                yield return new WaitForSeconds(1f);
-
-                if (count <= 0)
-                    break;
-            }
-
-            Hide();
-
-            SendEvent(FBConsts.E_CountDownComplete);
-        }
-
         #endregion
 
         #region 帮助方法

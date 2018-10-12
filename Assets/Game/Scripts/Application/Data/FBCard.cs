@@ -1,4 +1,4 @@
-﻿//  Felix-Bang：FBApplicationBase
+﻿//  Felix-Bang：FBCard
 //　　 へ　　　　　／|
 //　　/＼7　　　 ∠＿/
 //　 /　│　　 ／　／
@@ -12,30 +12,21 @@
 //　 ヽ_ﾉ　　(_／　 │／／
 //　　7　　　　　　　|／
 //　　＞―r￣￣`ｰ―＿
-// Describe：MVC框架启动的入口
-// Createtime：2018/9/19
+// Describe：关卡选择界面关卡缩略图数据
+// Createtime：
 
 
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace FBFramework
+namespace FBApplication
 {
-	public abstract class FBApplicationBase<T>:FBSingleton<T>
-        where T : MonoBehaviour
+	public class FBCard
     {
-
-        protected void RegisterController(string eventName, Type controllerType)
-        {
-            FBMVC.RegisterController(eventName, controllerType);
-        }
-
-        protected void SendEvent(string eventName,object data=null)
-        {
-            FBMVC.SendEvent(eventName,data);
-        }
-    }
+        public int LevelID;
+        public string CardImage;
+        public bool IsLocked;
+	}
 }
 

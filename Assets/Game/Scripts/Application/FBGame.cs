@@ -52,11 +52,10 @@ namespace FBApplication
             Data = FBStaticData.Instance;
 
             //注册命令（Command）
-            RegisterController(FBConsts.E_StartUp, typeof(FBStartUpCommand));
+            RegisterController(FBConsts.E_StartUp, typeof(FBStartUpController));
 
             //启动游戏
             SendEvent(FBConsts.E_StartUp);
-
         }
 
         /// <summary>
@@ -65,17 +64,17 @@ namespace FBApplication
         /// <param name="index">场景索引</param>
         public void LoadScene(int index)
         {
-            //推出旧场景
+            //退出旧场景
             //事件参数
             FBSceneArgs e = new FBSceneArgs
             {
                 Index = SceneManager.GetActiveScene().buildIndex
             };
             //发布事件
-            SendEvent(FBConsts.E_ExitScene,e);
+            SendEvent(FBConsts.E_SceneExit,e);
 
             //加载新场景
-            SceneManager.LoadScene(index,LoadSceneMode.Single);
+            SceneManager.LoadScene(index, LoadSceneMode.Single);
         }
 
         // 当前场景加载后触发
@@ -86,10 +85,11 @@ namespace FBApplication
                 Index = arg0.buildIndex
             };
 
-            SendEvent(FBConsts.E_EnterScene, e);
+            SendEvent(FBConsts.E_SceneEnter, e);
         }
 
         // 当前场景加载后触发
+        // OnLevelWasLoaded新版本的Unity即将放弃
         //private void OnLevelWasLoaded(int index)
         //{
         //    FBSceneArgs e = new FBSceneArgs

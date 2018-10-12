@@ -1,4 +1,4 @@
-﻿//  Felix-Bang：FBEnterSceneCommand
+﻿//  Felix-Bang：FBRotate
 //　　 へ　　　　　／|
 //　　/＼7　　　 ∠＿/
 //　 /　│　　 ／　／
@@ -12,25 +12,24 @@
 //　 ヽ_ﾉ　　(_／　 │／／
 //　　7　　　　　　　|／
 //　　＞―r￣￣`ｰ―＿
-// Describe：进入场景控制器
-// Createtime：2018/9/26
+// Describe：旋转
+// Createtime：2018/10/09
 
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using FBFramework;
 
-namespace FBApplication
+namespace Felix
 {
-	public class FBEnterSceneCommand : FBController
+	public class FBRotate : MonoBehaviour
 	{
-        public override void Execute(object data = null)
-        {
-            //注册视图（View）
-        }
+		public float Speed = 360;
 
-
-    }
+		void Update ()
+		{
+            transform.Rotate(Vector3.forward, Time.deltaTime * Speed, Space.Self);
+		}
+	}
 }
 
