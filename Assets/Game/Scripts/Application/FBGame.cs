@@ -34,7 +34,7 @@ namespace FBApplication
         [HideInInspector]
         public FBSound Sound = null;
         [HideInInspector]
-        public FBStaticData Data = null;
+        public FBStaticData StaticData = null;
 
         private void OnEnable()
         {
@@ -49,7 +49,7 @@ namespace FBApplication
             //赋值
             ObjectPool = FBObjectPool.Instance;
             Sound = FBSound.Instance;
-            Data = FBStaticData.Instance;
+            StaticData = FBStaticData.Instance;
 
             //注册命令（Command）
             RegisterController(FBConsts.E_StartUp, typeof(FBStartUpController));

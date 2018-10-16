@@ -34,7 +34,7 @@ namespace FBApplication
 
         //Model
         public const string M_GameModel = "M_GameModel";
-
+        public const string M_RoundModel = "M_RoundModel";
 
         //View
         public const string V_Start = "V_Start";
@@ -45,7 +45,7 @@ namespace FBApplication
         public const string V_Lost = "V_Lost";
         public const string V_System = "V_System";
         public const string V_Complete = "V_Complete";
-
+        public const string V_Spawner = "V_Spawner";
         //Control
         /// <summary> 启动游戏 </summary>
         public const string E_StartUp = "E_StartUp";
@@ -56,22 +56,36 @@ namespace FBApplication
         public const string E_SceneExit = "E_SceneExit";
 
         /// <summary> 开始关卡 </summary>
-        public const string E_LevelStart = "E_LevelStart";
+        public const string E_LevelStart = "E_LevelStart";                     //FBStartLevelArgs
         /// <summary> 结束关卡 </summary>
-        public const string E_LevelEnd = "E_LevelEnd";
+        public const string E_LevelEnd = "E_LevelEnd";                         //FBEndLevelArgs
 
         /// <summary> 结束倒计时 </summary>
         public const string E_CountDownComplete = "E_CountDownComplete";
 
-        
+        /// <summary> 开始回合 </summary>
+        public const string E_RoundStart = "E_RoundStart";                     //FBRoundStartArgs
+                                                                   
+        /// <summary> 出怪 </summary>
+        public const string E_SpawnMonster = "E_SpawnMonster";                 //FBSpawnMonsterArgs
 
-        
+
     }
 
     public enum GameSpeed
     {
         One,
         Two
+    }
+    public enum MonsterType
+    {
+        Monster0,
+        Monster1,
+        Monster2,
+        Monster3,
+        Monster4,
+        Monster5,
+     
     }
 }
 

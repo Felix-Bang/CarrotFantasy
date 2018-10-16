@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Monster
   layers:
   - Default
   - TransparentFX
@@ -40,4 +41,28 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1142184591
+    locked: 0
+  - name: Road
+    uniqueID: 2683931399
+    locked: 0
+  - name: Carrot
+    uniqueID: 96220165
+    locked: 0
+  - name: Monster
+    uniqueID: 3306097041
+    locked: 0
+  - name: Tower
+    uniqueID: 756183513
+    locked: 0
+  - name: Bullet
+    uniqueID: 2150485293
+    locked: 0
+  - name: Effects
+    uniqueID: 652498007
+    locked: 0
+  - name: Interactive
+    uniqueID: 3316360953
     locked: 0

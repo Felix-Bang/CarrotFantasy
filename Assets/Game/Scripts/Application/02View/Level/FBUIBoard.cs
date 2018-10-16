@@ -110,31 +110,25 @@ namespace FBApplication
             Speed = GameSpeed.One;
         }
 
-        public FBUICountDown UICountDown;
-
         private void Start()
         {
-           
-
             btnSpeed1.onClick.AddListener(OnSpeed1Click);
             btnSpeed2.onClick.AddListener(OnSpeed2Click);
             btnPause.onClick.AddListener(OnPauseClick);
             btnPlay.onClick.AddListener(OnPlayClick);
-            btnSystem.onClick.AddListener(OnSystemClick);
-
-            UICountDown.StartCountDown();
+            btnSystem.onClick.AddListener(OnSystemClick);           
         }
         #endregion
 
         #region 事件回调
         public override void HandleEvent(string eventName, object data = null)
         {
-            switch(eventName)
-            {
-                case FBConsts.E_CountDownComplete:
-                    FBGame.Instance.LoadScene(4);
-                    break;
-            }
+            //switch(eventName)
+            //{
+                //case FBConsts.E_CountDownComplete:
+                //    FBGame.Instance.LoadScene(4);
+                //    break;
+            //}
         }
         #endregion
 
@@ -142,8 +136,8 @@ namespace FBApplication
         public override void RegisterEvents()
         {
          
-            //注册事件
-            EventLists.Add(FBConsts.E_CountDownComplete);
+            ////注册事件
+            //EventLists.Add(FBConsts.E_CountDownComplete);
         }
 
         private void OnSpeed1Click()

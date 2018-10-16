@@ -88,6 +88,8 @@ namespace FBApplication
         private void OnClearClick()
         {
             Debug.Log("清空数据");
+            FBGameModel gameModel = GetModel<FBGameModel>();
+            gameModel.ClearProgress();
         }
         #endregion
 

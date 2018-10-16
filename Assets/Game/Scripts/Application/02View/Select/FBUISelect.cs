@@ -19,6 +19,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using FBFramework;
 using System.IO;
 using System;
@@ -27,15 +28,13 @@ namespace FBApplication
 {
 	public class FBUISelect : FBView
 	{
-        #region 常量
-        #endregion
-
-        #region 事件
-        #endregion
-
         #region 字段
-        private List<FBCard> f_cards = new List<FBCard>();
-        private int f_selectedIndex=-1;
+        [SerializeField]
+        private Button btnBack;
+        [SerializeField]
+        private Button btnHelp;
+        [SerializeField]
+        private Button btnStart;
         [SerializeField]
         private FBUICard f_leftCard;
         [SerializeField]
@@ -43,6 +42,8 @@ namespace FBApplication
         [SerializeField]
         private FBUICard f_rightCard;
 
+        private List<FBCard> f_cards = new List<FBCard>();
+        private int f_selectedIndex = -1;
         FBGameModel f_gameModel = null;
         #endregion
 
@@ -57,12 +58,17 @@ namespace FBApplication
         #endregion
 
         #region 方法
-        public void GoBack()
+        private void OnBackButtonClick()
         {
             FBGame.Instance.LoadScene(1);
         }
 
-        public void ChooseLevel()
+        private void OnHelpButtonClick()
+        {
+            Debug.Log("Help");
+        }
+
+        private void OnStartButtonClick()
         {
             FBStartLevelArgs e = new FBStartLevelArgs
             {
@@ -71,6 +77,16 @@ namespace FBApplication
 
             SendEvent(FBConsts.E_LevelStart, e);
         }
+
+        //public void ChooseLevel()
+        //{
+        //    FBStartLevelArgs e = new FBStartLevelArgs
+        //    {
+        //        ID = f_selectedIndex
+        //    };
+
+        //    SendEvent(FBConsts.E_LevelStart, e);
+        //}
 
         private void LoadCards()
         {
@@ -84,7 +100,8 @@ namespace FBApplication
                 {
                     LevelID = i,
                     CardImage = levels[i].CardImage,
-                    IsLocked = i > f_gameModel.GameProgressIndex  //TODO
+                    IsLocked = !(i <= f_gameModel.GameProgressIndex +1) //TODO
+                    
                 };
 
                 f_cards.Add(card);
@@ -122,6 +139,9 @@ namespace FBApplication
 
             f_currentCard.IsTransparent = false;
             f_currentCard.Card = f_cards[currentIndex];
+            //开始按钮显示设置
+            btnStart.gameObject.SetActive(!f_cards[currentIndex].IsLocked);
+
 
             if (rightIndex >= f_cards.Count)
                 f_rightCard.gameObject.SetActive(false);
@@ -136,7 +156,12 @@ namespace FBApplication
         #endregion
 
         #region Unity回调
-
+        private void Start()
+        {
+            btnBack.onClick.AddListener(OnBackButtonClick);
+            btnHelp.onClick.AddListener(OnHelpButtonClick);
+            btnStart.onClick.AddListener(OnStartButtonClick);
+        }
         #endregion
 
         #region 事件回调

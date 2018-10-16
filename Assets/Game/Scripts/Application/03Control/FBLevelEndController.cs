@@ -27,7 +27,23 @@ namespace FBApplication
     {
         public override void Execute(object data = null)
         {
-            throw new System.NotImplementedException();
+            FBEndLevelArgs e = data as FBEndLevelArgs;
+
+            //保存游戏状态
+            FBGameModel gameModel = GetModel<FBGameModel>();
+            gameModel.StoptLevel(e.IsWin);
+
+            //弹出UI
+            if (e.IsWin)
+            {
+                GetView<FBUIWin>().Show();
+            }
+            else
+            {
+                GetView<FBUILost>().Show();
+            }
+
+
         }
 
    

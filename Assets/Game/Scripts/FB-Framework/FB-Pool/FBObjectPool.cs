@@ -38,6 +38,7 @@ namespace FBFramework
                 RegisterNewPool(name);
 
             FBSubPool pool = f_pools[name];
+
             return pool.Spawn();
         }
 
@@ -75,9 +76,8 @@ namespace FBFramework
                 path = ResourceDir + "/" + name;
 
             GameObject prefab = Resources.Load<GameObject>(path);
-
-            FBSubPool pool = new FBSubPool(prefab);
-            f_pools.Add(pool.name, pool);
+            FBSubPool pool = new FBSubPool(transform, prefab);
+            f_pools.Add(pool.Name, pool);
         }
     }
 

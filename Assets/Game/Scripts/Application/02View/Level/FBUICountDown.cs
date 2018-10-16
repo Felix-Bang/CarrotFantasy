@@ -27,12 +27,6 @@ namespace FBApplication
 {
 	public class FBUICountDown : FBView
 	{
-        #region 常量
-        #endregion
-
-        #region 事件
-        #endregion
-
         #region 字段
         [SerializeField]
         private Image imgCount;
@@ -47,16 +41,9 @@ namespace FBApplication
         }
         #endregion
 
-        #region Unity回调
-        private void Start()
-        {
-        }
-        #endregion
-
         #region 事件回调
         public override void RegisterEvents()
-        {
-            base.RegisterEvents();
+        {       
             this.EventLists.Add(FBConsts.E_SceneEnter);
         }
 

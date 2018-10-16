@@ -24,7 +24,8 @@ namespace FBApplication
 	{
         public override void Execute(object data = null)
         {
-            
+            //离开场景前回收
+            FBGame.Instance.ObjectPool.UnspawnAll();
         }
 
      

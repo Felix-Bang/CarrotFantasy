@@ -67,7 +67,7 @@ namespace FBApplication
             get { return f_gameProgressIndex > LevelCount-1; }
         }
 
-        public FBLevel PlayerLevel
+        public FBLevel PlayLevel
         {
             get 
             {
@@ -100,17 +100,9 @@ namespace FBApplication
             get { return f_playLevelIndex; }
             set { f_playLevelIndex = value; }
         }
-
-
         #endregion
 
-        #region Unity回调
-
-        #endregion
-
-        #region 事件回调
-        #endregion
-
+      
         #region 方法
         //初始化
         public void OnInitialized()
@@ -126,7 +118,8 @@ namespace FBApplication
             }
 
             //读取游戏进度
-            f_gameProgressIndex = FBSaver.GetProgress();
+            //f_gameProgressIndex = FBSaver.GetProgress();
+            f_gameProgressIndex = 0;
         }
 
         public void StartLevel(int levelIndex)
@@ -138,7 +131,12 @@ namespace FBApplication
         public void StoptLevel(bool isWin)
         {
             if (isWin && PlayLevelIndex > GameProgressIndex)
+            {
+                //更新进度
+                f_gameProgressIndex = PlayLevelIndex;
+                //保存进度
                 FBSaver.SetProgress(PlayLevelIndex);
+            }
 
             f_isPlaying = false;
         }

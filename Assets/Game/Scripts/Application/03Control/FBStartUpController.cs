@@ -29,7 +29,7 @@ namespace FBApplication
         {
             //注册模型（Model）
             RegisterModel(new FBGameModel());
-
+            RegisterModel(new FBRoundModel());
             //注册命令（Command）
             RegistControllers();
 
@@ -47,6 +47,7 @@ namespace FBApplication
             RegisterController(FBConsts.E_SceneExit, typeof(FBSceneExitController));
             RegisterController(FBConsts.E_LevelStart, typeof(FBLevelStartController));
             RegisterController(FBConsts.E_LevelEnd, typeof(FBLevelEndController));
+            RegisterController(FBConsts.E_CountDownComplete, typeof(FBCountDownCompleteController));
         }
     }
 }

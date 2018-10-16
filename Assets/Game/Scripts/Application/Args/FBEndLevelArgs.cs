@@ -29,7 +29,7 @@ namespace FBApplication
         /// <summary>
         /// 结束类型：闯关成功（true）/失败（false）
         /// </summary>
-        public bool IsPassSuccess;
+        public bool IsWin;
 	}
 }
 

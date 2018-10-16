@@ -19,8 +19,9 @@ using UnityEngine;
 
 namespace FBFramework
 {
-	public class FBSubPool : MonoBehaviour
+	public class FBSubPool 
 	{
+        Transform f_parent;
         GameObject f_prefab;
         List<GameObject> f_objects = new List<GameObject>();
 
@@ -34,8 +35,9 @@ namespace FBFramework
         /// 构造
         /// </summary>
         /// <param name="prefab"> 预制件 </param>
-        public FBSubPool(GameObject prefab)
+        public FBSubPool(Transform parent, GameObject prefab)
         {
+            f_parent = parent;
             f_prefab = prefab;
         }
 
@@ -43,7 +45,7 @@ namespace FBFramework
         public GameObject Spawn()
         {
             GameObject go = null;
-
+   
             foreach (var obj in f_objects)
             {
                 if (!obj.activeSelf)
@@ -56,6 +58,7 @@ namespace FBFramework
             if (go == null)
             {
                 go = GameObject.Instantiate<GameObject>(f_prefab);
+                go.transform.parent = f_parent;
                 f_objects.Add(go);
             }
 

@@ -41,6 +41,7 @@ namespace FBApplication
                     RegisterView(GameObject.Find("UISelect").GetComponent<FBUISelect>());
                     break;
                 case 3:
+                    RegisterView(GameObject.Find("Map").transform.GetComponent<FBUISpawner>());
                     RegisterView(GameObject.Find("Canvas").transform.Find("UIBoard").GetComponent<FBUIBoard>());
                     RegisterView(GameObject.Find("Canvas").transform.Find("UICountDown").GetComponent<FBUICountDown>());
                     RegisterView(GameObject.Find("Canvas").transform.Find("UIWin").GetComponent<FBUIWin>());

@@ -80,14 +80,15 @@ namespace FBApplication
         #region 方法
         private void OnRestartClick()
         {
-            throw new NotImplementedException();
+            FBGameModel gameModel = GetModel<FBGameModel>();
+            SendEvent(FBConsts.E_LevelStart, new FBStartLevelArgs() { ID = gameModel.PlayLevelIndex });
         }
 
-       
-
-        private void Show()
+        public void Show()
         {
             gameObject.SetActive(true);
+            FBRoundModel roundModel = GetModel<FBRoundModel>();
+            UpdatteRoundInfo(roundModel.RoundIndex+1,roundModel.RoundTotal);
         }
 
         private void Hide()
