@@ -158,7 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectPool: {fileID: 0}
   Sound: {fileID: 0}
-  Data: {fileID: 0}
+  StaticData: {fileID: 0}
 --- !u!114 &836610724
 MonoBehaviour:
   m_ObjectHideFlags: 0

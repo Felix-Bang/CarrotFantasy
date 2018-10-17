@@ -279,6 +279,10 @@ namespace FBApplication
         #region 事件回调
         private void MapOnGridClick(object sender, FBGridClickEventArgs e)
         {
+            //当前场景不是LevelBuilder 不能编辑
+            if (gameObject.scene.name != "LevelBuilder")
+                return;
+
             if (Level == null)
                 return;           
 
@@ -291,9 +295,7 @@ namespace FBApplication
                     f_road.Remove(e.Grid);
                 else
                     f_road.Add(e.Grid);
-            }
-            else
-            { }        
+            }                 
         }
         #endregion
 
@@ -316,7 +318,7 @@ namespace FBApplication
         /// </summary>
         /// <param name="g"> 网格 </param>
         /// <returns></returns>
-        Vector3 GetPosition(FBGrid g)
+        public Vector3 GetPosition(FBGrid g)
         {
             return new Vector3(
                 -f_mapWidth / 2 + (g.Index_X + 0.5f) * f_tileWidth,
@@ -335,13 +337,25 @@ namespace FBApplication
             return f_grid[index];
         }
 
+        /// <summary>
+        /// 根据位置获取网格
+        /// </summary>
+        /// <param name="position">坐标</param>
+        /// <returns></returns>
+        public FBGrid GetGrid(Vector3 position)
+        {
+            int gridX=(int)((position.x + f_mapWidth / 2) / f_tileWidth);
+            int gridY = (int)((position.y + f_mapHeight / 2) / f_tileHeight);
+            return GetGrid(gridX, gridY);
+        }
+
         /// <summary> 获取鼠标下面的格子 <summary>
         FBGrid GetTileUnderMouse()
         {
             Vector2 wordPos = GetWorldPosition();
-            int col = (int)((wordPos.x + f_mapWidth / 2) / f_tileWidth);
-            int row = (int)((wordPos.y + f_mapHeight / 2) / f_tileHeight);
-            return GetGrid(col, row);
+            //int col = (int)((wordPos.x + f_mapWidth / 2) / f_tileWidth);
+            //int row = (int)((wordPos.y + f_mapHeight / 2) / f_tileHeight);
+            return GetGrid(wordPos);
         }
 
         /// <summary> 获取鼠标所在位置的世界坐标 <summary>

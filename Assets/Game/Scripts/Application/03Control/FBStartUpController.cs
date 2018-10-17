@@ -48,6 +48,9 @@ namespace FBApplication
             RegisterController(FBConsts.E_LevelStart, typeof(FBLevelStartController));
             RegisterController(FBConsts.E_LevelEnd, typeof(FBLevelEndController));
             RegisterController(FBConsts.E_CountDownComplete, typeof(FBCountDownCompleteController));
+
+            RegisterController(FBConsts.E_UpgradeTower, typeof(FBUpgradeTowerCommand));
+            RegisterController(FBConsts.E_SellTower, typeof(FBSellTowerCommand));
         }
     }
 }

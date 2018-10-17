@@ -705,6 +705,7 @@ GameObject:
   - component: {fileID: 425383605}
   - component: {fileID: 425383607}
   - component: {fileID: 425383606}
+  - component: {fileID: 425383608}
   m_Layer: 0
   m_Name: Sell
   m_TagString: Untagged
@@ -796,6 +797,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &425383608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 425383604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 214b5c9e29478f849a525340ea69df19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &452500482
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,6 +887,7 @@ GameObject:
   - component: {fileID: 539213891}
   - component: {fileID: 539213893}
   - component: {fileID: 539213892}
+  - component: {fileID: 539213894}
   m_Layer: 0
   m_Name: Upgrade
   m_TagString: Untagged
@@ -966,6 +979,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &539213894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 539213890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d8dbca7490e3fe4387d529894242df8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &611053122
 GameObject:
   m_ObjectHideFlags: 0
@@ -1577,8 +1601,9 @@ GameObject:
   - component: {fileID: 1008066375}
   - component: {fileID: 1008066377}
   - component: {fileID: 1008066376}
+  - component: {fileID: 1008066378}
   m_Layer: 0
-  m_Name: Spawn
+  m_Name: TowerIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1668,6 +1693,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1008066378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1008066374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94554cdc827555a44bdd5d6681a92a12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1065300050
 GameObject:
   m_ObjectHideFlags: 0
@@ -1676,8 +1712,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1065300051}
+  - component: {fileID: 1065300052}
   m_Layer: 0
-  m_Name: TowersPopup
+  m_Name: TowerPopup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1698,6 +1735,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1065300052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1065300050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7420a207aab12d646ae70c1d23ece1d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EventLists: []
+  f_spawnPanel: {fileID: 1294642933}
+  f_upgadePanel: {fileID: 2058264036}
 --- !u!1 &1184745855
 GameObject:
   m_ObjectHideFlags: 0
@@ -1984,6 +2035,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1294642931}
   - component: {fileID: 1294642932}
+  - component: {fileID: 1294642933}
   m_Layer: 0
   m_Name: SpawnPanel
   m_TagString: Untagged
@@ -2052,6 +2104,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1294642933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1294642930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: facfd014f9beb024d83a6fbfebd0083d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1389239980
 GameObject:
   m_ObjectHideFlags: 0
@@ -3518,8 +3581,9 @@ GameObject:
   - component: {fileID: 1932873991}
   - component: {fileID: 1932873993}
   - component: {fileID: 1932873992}
+  - component: {fileID: 1932873994}
   m_Layer: 0
-  m_Name: Spawn
+  m_Name: TowerIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3609,6 +3673,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1932873994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1932873990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94554cdc827555a44bdd5d6681a92a12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1987964158
 GameObject:
   m_ObjectHideFlags: 0
@@ -3687,6 +3762,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2058264034}
   - component: {fileID: 2058264035}
+  - component: {fileID: 2058264036}
   m_Layer: 0
   m_Name: UpgradePanel
   m_TagString: Untagged
@@ -3755,6 +3831,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2058264036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2058264033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6354cd89d397c424ba3984b05f742929, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2100544091
 GameObject:
   m_ObjectHideFlags: 0

@@ -41,7 +41,7 @@ namespace FBApplication
         //最大通关关卡索引
         int f_gameProgressIndex = -1;
         //游戏当前分数
-        int f_score = 0;
+        int f_gold = 0;
         //是否游戏中
         bool f_isPlaying = false;
         #endregion
@@ -78,10 +78,10 @@ namespace FBApplication
             }
         }
 
-        public int Score
+        public int Gold
         {
-            get { return f_score; }
-            set { f_score = value; }
+            get { return f_gold; }
+            set { f_gold = value; }
         }
 
         public bool IsPlaying

@@ -46,6 +46,8 @@ namespace FBApplication
         public const string V_System = "V_System";
         public const string V_Complete = "V_Complete";
         public const string V_Spawner = "V_Spawner";
+        public const string V_TowerPopup = "V_TowerPopup";
+
         //Control
         /// <summary> 启动游戏 </summary>
         public const string E_StartUp = "E_StartUp";
@@ -69,7 +71,14 @@ namespace FBApplication
         /// <summary> 出怪 </summary>
         public const string E_SpawnMonster = "E_SpawnMonster";                 //FBSpawnMonsterArgs
 
+        /// <summary> 炮塔 </summary>
+        public const string E_ShowTowerCreat = "E_ShowTowerCreat";             //FBShowTowerCreatArgs
+        public const string E_ShowTowerUpgrade = "E_ShowTowerUpgrade";         //FBShowTowerUpgradeArgs
+        public const string E_TowerHide = "E_TowerHide";
 
+        public const string E_SpawnTower = "E_SpawnTower";                     //FBSpawnTowerArgs
+        public const string E_UpgradeTower = "E_UpgradeTower";                 //FBUpgradeTowerArgs
+        public const string E_SellTower = "E_SellTower";                       //FBSellTowerArgs
     }
 
     public enum GameSpeed

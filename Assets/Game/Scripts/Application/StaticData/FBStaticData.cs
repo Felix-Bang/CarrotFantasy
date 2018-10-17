@@ -28,6 +28,9 @@ namespace FBApplication
 	{
         Dictionary<int, FBCarrotInfo> f_carrots_dic = new Dictionary<int, FBCarrotInfo>();
         Dictionary<int, FBMonsterInfo> f_monsters_dic = new Dictionary<int, FBMonsterInfo>();
+        Dictionary<int, FBTowerInfo> f_towers_dic = new Dictionary<int, FBTowerInfo>();
+        //Dictionary<int, BulletInfo> m_Bullets = new Dictionary<int, BulletInfo>();
+
         protected override void Awake()
         {
             base.Awake();
@@ -54,7 +57,8 @@ namespace FBApplication
 
         private void OnInitializeTowers()
         {
-
+            f_towers_dic.Add(0, new FBTowerInfo() { ID = 0, PrefabName = "Bottle", NormalIcon = "Bottle/Bottle01", DisabledIcon = "Bottle/Bottle00", MaxLevel = 3, BasePrice = 1, ShotRate = 2, GuardRange = 3f, UseBulletID = 0 });
+            f_towers_dic.Add(1, new FBTowerInfo() { ID = 1, PrefabName = "Fan", NormalIcon = "Fan/Fan01", DisabledIcon = "Fan/Fan00", MaxLevel = 3, BasePrice = 2, ShotRate = 1, GuardRange = 3f, UseBulletID = 1 });
         }
 
         private void OnInitializeBullets()
@@ -70,6 +74,11 @@ namespace FBApplication
         public FBMonsterInfo GetMoster(MonsterType mosterID)
         {
             return f_monsters_dic[(int)mosterID];
+        }
+
+        public FBTowerInfo GetTower(int towerID)
+        {
+            return f_towers_dic[towerID];
         }
 
     }
