@@ -50,10 +50,7 @@ namespace FBApplication
         #region 属性
         public override string Name
         {
-            get
-            {
-                return FBConsts.V_Select;
-            }
+            get { return FBConsts.V_Select; }
         }
         #endregion
 

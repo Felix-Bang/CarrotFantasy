@@ -43,8 +43,8 @@ namespace FBApplication
 
         #region 事件回调
         public override void RegisterEvents()
-        {       
-            this.EventLists.Add(FBConsts.E_SceneEnter);
+        {
+            EventLists.Add(FBConsts.E_SceneEnter);
         }
 
         public override void HandleEvent(string eventName, object data = null)
@@ -98,15 +98,6 @@ namespace FBApplication
         }
 
         #endregion
-
-        #region 帮助方法
-        #endregion
-
-
-
-
-
-
     }
 }
 

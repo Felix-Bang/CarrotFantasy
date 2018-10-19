@@ -31,22 +31,17 @@ namespace FBApplication
 
             //保存游戏状态
             FBGameModel gameModel = GetModel<FBGameModel>();
+            FBRoundModel roundModel = GetModel<FBRoundModel>();
+
+            roundModel.StopRound();
             gameModel.StoptLevel(e.IsWin);
 
             //弹出UI
             if (e.IsWin)
-            {
                 GetView<FBUIWin>().Show();
-            }
             else
-            {
                 GetView<FBUILost>().Show();
-            }
-
-
         }
-
-   
 	}
 }
 

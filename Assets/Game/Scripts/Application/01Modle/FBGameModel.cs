@@ -27,12 +27,6 @@ namespace FBApplication
 {
 	public class FBGameModel : FBModel
 	{
-        #region 常量
-        #endregion
-
-        #region 事件
-        #endregion
-
         #region 字段
         //所有关卡
         List<FBLevel> f_levels = new List<FBLevel>();
@@ -118,14 +112,13 @@ namespace FBApplication
             }
 
             //读取游戏进度
-            //f_gameProgressIndex = FBSaver.GetProgress();
-            f_gameProgressIndex = 0;
+            f_gameProgressIndex = FBSaver.GetProgress();
+
         }
 
         public void StartLevel(int levelIndex)
         {
             f_playLevelIndex = levelIndex;
-            f_isPlaying = true;
         }
 
         public void StoptLevel(bool isWin)
@@ -150,16 +143,6 @@ namespace FBApplication
             FBSaver.SetProgress(-1);
         }
         #endregion
-
-        #region 帮助方法
-        #endregion
-
-
-
-
-
-
-
     }
 }
 

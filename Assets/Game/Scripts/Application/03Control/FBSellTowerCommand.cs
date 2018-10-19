@@ -26,18 +26,18 @@ namespace FBApplication
 	{
         public override void Execute(object data = null)
         {
-            //FBSellTowerArgs e = data as FBSellTowerArgs;
-            //FBTower tower = e.Tower;
+            FBSellTowerArgs e = data as FBSellTowerArgs;
+            FBTower tower = e.Tower;
 
-            ////清除Tile存储的信息
-            //tower.Tile.Data = null;
+            //清除Tile存储的信息
+            tower.Tile.Data = null;
 
-            ////半价出售
-            //FBGameModel gm = GetModel<FBGameModel>();
-            //gm.Gold += e.Tower.Price / 2;
+            //半价出售
+            FBGameModel gm = GetModel<FBGameModel>();
+            gm.Gold += e.Tower.Price / 2;
 
-            ////回收
-            //FBGame.Instance.ObjectPool.Unspawn(e.Tower.gameObject);
+            //回收
+            FBGame.Instance.ObjectPool.Unspawn(e.Tower.gameObject);
         }
 	}
 }

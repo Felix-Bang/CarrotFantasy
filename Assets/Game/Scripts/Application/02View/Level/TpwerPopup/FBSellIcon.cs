@@ -30,8 +30,6 @@ namespace FBApplication
         #region Unity回调
         private void OnMouseDown()
         {
-            //FBSellTowerArgs args = new FBSellTowerArgs() { Tower=f_tower};
-            //SendMessageUpwards("OnSellTower", args, SendMessageOptions.RequireReceiver);
             SendMessageUpwards("OnSellTower", f_tower, SendMessageOptions.RequireReceiver);
         }
         #endregion
@@ -40,8 +38,6 @@ namespace FBApplication
         public void Load(FBTower tower)
         {
             f_tower = tower;
-
-
         }
         #endregion
 

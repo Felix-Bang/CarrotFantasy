@@ -35,10 +35,7 @@ namespace FBApplication
             FBGame.Instance.LoadScene(2);
         }
 
-        public override void HandleEvent(string eventName, object data = null)
-        {
-            throw new System.NotImplementedException();
-        }
+        public override void HandleEvent(string eventName, object data = null) {}
 	}
 }
 

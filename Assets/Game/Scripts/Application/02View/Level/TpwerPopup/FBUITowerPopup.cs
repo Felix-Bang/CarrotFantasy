@@ -32,13 +32,46 @@ namespace FBApplication
         #endregion
 
         #region 属性
+        private static FBUITowerPopup f_Instance = null;
+        public static FBUITowerPopup Instance
+        {
+            get
+            {
+                return f_Instance;
+            }
+        }
+
         public override string Name
         {
             get { return FBConsts.V_TowerPopup; }
         }
+
+        public bool IsPopShow
+        {
+            get
+            {
+                foreach (Transform child in transform)
+                {
+                    if (child.gameObject.activeSelf)
+                        return true;
+                }
+                return false;
+            }
+        }
         #endregion
 
         #region 事件回调
+        void Awake()
+        {
+            f_Instance = this;
+        }
+
+        void Start()
+        {
+            HideAllPanels();
+        }
+
+
         public override void RegisterEvents()
         {
             EventLists.Add(FBConsts.E_ShowTowerCreat);
@@ -64,10 +97,7 @@ namespace FBApplication
 
         void OnSpawnTower(object[] args)
         {
-
-            SendEvent(FBConsts.E_SpawnTower,new FBSpawnTowerArgs() { TowerID =(int)args[0],Position=(Vector3)args[1]});
-            //HideAllPanels();
-            //SendEvent(FBConsts.E_SpawnTower, args);
+            SendEvent(FBConsts.E_SpawnTower,new FBSpawnTowerArgs() { TowerID =(int)args[0],Position=(Vector3)args[1]});       
         }
 
         void OnUpgradeTower(FBTower tower)
@@ -80,34 +110,20 @@ namespace FBApplication
             SendEvent(FBConsts.E_SellTower, new FBSellTowerArgs() { Tower = tower });
         }
 
-        //void OnUpgradeTower(FBUpgradeTowerArgs args)
-        //{
-        //    HideAllPanels();
-        //    SendEvent(FBConsts.E_UpgradeTower, args);
-        //}
-
-        //void OnSellTower(FBSellTowerArgs args)
-        //{
-        //    HideAllPanels();
-        //    SendEvent(FBConsts.E_SellTower, args);
-        //}
-
         #endregion
 
         #region 方法
         void ShowCreatePanel(FBShowTowerCreatArgs args)
-        {           
-            FBGameModel gm = GetModel<FBGameModel>();
-
+        {
             HideAllPanels();
+            FBGameModel gm = GetModel<FBGameModel>();
             f_spawnPanel.Show(gm, args.Position, args.UpSide);
         }
 
         void ShowUpgradePanel(FBShowTowerUpgradeArgs args)
         {
-            FBGameModel gm = GetModel<FBGameModel>();
-
             HideAllPanels();
+            FBGameModel gm = GetModel<FBGameModel>();
             f_upgadePanel.Show(gm, args.Tower);
         }
 
@@ -116,9 +132,6 @@ namespace FBApplication
             f_spawnPanel.Hide();
             f_upgadePanel.Hide();
         }
-
-        
-
         #endregion      
     }
 }

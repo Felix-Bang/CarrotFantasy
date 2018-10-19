@@ -36,7 +36,7 @@ namespace FBApplication
         /// <summary> 价格 </summary>
         public int BasePrice;
         /// <summary> 射击频率 </summary>
-        public int ShotRate;
+        public float ShotRate;
         /// <summary> 警戒范围 </summary>
         public float GuardRange;
         /// <summary> 子弹ID </summary>

@@ -30,13 +30,11 @@ namespace FBApplication
         private const float f_spawnInterval = 1f;  //两怪物出生间隔 1秒
         #endregion
 
-        #region 事件
-        #endregion
-
         #region 字段
         private List<FBRound> f_rounds = new List<FBRound>();
         private int f_roundIndex = -1;       //当前回合的索引
         private bool f_allRoundsComplete = false;    //是否所有怪物都出来
+        private Coroutine f_coroutine;
         #endregion
 
         #region 属性
@@ -64,48 +62,35 @@ namespace FBApplication
         }
         #endregion
 
-        #region Unity回调
-        void Start () 
-		{
-			
-		}
-	
-		void Update ()
-		{
-			
-		}
-        #endregion
-
-        #region 事件回调
-        #endregion
-
         #region 方法
         public void LoadLevel(FBLevel level)
         {
             f_rounds = level.Rounds;
-            f_roundIndex = -1;
-            f_allRoundsComplete = false;
         }
 
         public void StartRound()
         {
-            FBGame.Instance.StopCoroutine(RunRound());
-            FBGame.Instance.StartCoroutine(RunRound());
+           f_coroutine = FBGame.Instance.StartCoroutine(RunRound());
         }
 
         public void StopRound()
         {
-            FBGame.Instance.StopCoroutine(RunRound());
+            FBGame.Instance.StopCoroutine(f_coroutine);
         }
 
         IEnumerator RunRound()
         {
+            f_roundIndex = -1;
+            f_allRoundsComplete = false;
+
             for (int i = 0; i < f_rounds.Count; i++)
             {
+                f_roundIndex = i;
+                
                 //回合开始
                 FBRoundStartArgs e = new FBRoundStartArgs
                 {
-                    RoundIndex = i,
+                    RoundIndex = f_roundIndex,
                     RoundTotal = RoundTotal
                 };
                 SendEvent(FBConsts.E_RoundStart, e);
@@ -122,19 +107,15 @@ namespace FBApplication
                         MonsterID = round.MonsterID
                     };
                     SendEvent(FBConsts.E_SpawnMonster,spawnArgs);
+
+                    if (i == f_rounds.Count -1 && k == round.Count - 1)
+                        f_allRoundsComplete = true;
                 }
 
-                f_roundIndex++;
-
                 //回合间隔
-                if(i<f_rounds.Count-1)
+                if(!f_allRoundsComplete)
                     yield return new WaitForSeconds(f_roundInterval);
             }
-
-            //回合结束事件
-
-            //出怪完成
-            f_allRoundsComplete = true;
         }
 
 

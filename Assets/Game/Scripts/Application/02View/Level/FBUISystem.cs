@@ -34,7 +34,7 @@ namespace FBApplication
         #region 事件
         #endregion
 
-        #region 
+        #region 字段
         [SerializeField]
         private Button btnResume;
         [SerializeField]
@@ -79,17 +79,17 @@ namespace FBApplication
 
         private void OnResumeClick()
         {
-            throw new NotImplementedException();
+           
         }
 
         private void OnRestartClick()
         {
-            throw new NotImplementedException();
+            
         }
 
         private void OnSelectClick()
         {
-            throw new NotImplementedException();
+            
         }
 
         private void Show()
@@ -105,15 +105,6 @@ namespace FBApplication
     
 
         #endregion
-
-        #region 帮助方法
-        #endregion
-
-
-
-
-
-
     }
 }
 

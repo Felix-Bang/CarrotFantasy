@@ -94,7 +94,7 @@ namespace FBApplication
             FBMonsterInfo info = FBGame.Instance.StaticData.GetMoster(f_type);
             MaxHP = info.HP;
             HP = info.HP;
-            MoveSpeed = info.Speed;
+            MoveSpeed = info.MoveSpeed;
         }
 
         public override void OnUnspawn()
@@ -103,10 +103,8 @@ namespace FBApplication
             f_moveSpeed = 0;
             f_path = null;  
             f_pathIndex = -1;   
-            f_isReached = false; 
-
-            while (ReachedAction != null)
-                ReachedAction -= ReachedAction;
+            f_isReached = false;
+            ReachedAction = null;
         }
         #endregion
 
@@ -140,11 +138,6 @@ namespace FBApplication
         {
             transform.position = position;
         }
-
-
-        #endregion
-
-        #region 帮助方法
         #endregion
     }
 }

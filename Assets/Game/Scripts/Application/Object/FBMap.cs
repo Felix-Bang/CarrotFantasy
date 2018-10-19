@@ -113,6 +113,11 @@ namespace FBApplication
             }
         }
 
+        public Rect MapRect
+        {
+            get { return new Rect(-f_mapWidth / 2,-f_mapHeight / 2, f_mapWidth, f_mapHeight); }
+        }
+
         #endregion
 
         #region 方法

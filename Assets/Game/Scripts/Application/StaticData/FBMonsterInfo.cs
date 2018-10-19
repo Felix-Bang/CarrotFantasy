@@ -29,7 +29,9 @@ namespace FBApplication
         /// <summary> 血量 </summary>
         public int HP;
         /// <summary> 移动速度 </summary>
-        public float Speed;
+        public float MoveSpeed;
+        public int Price;
+
         #endregion
-	}
+    }
 }

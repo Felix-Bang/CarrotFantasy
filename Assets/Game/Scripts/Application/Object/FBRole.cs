@@ -83,17 +83,7 @@ namespace FBApplication
     
         #endregion
 
-        #region Unity回调
-        void Start () 
-		{
-			
-		}
-	
-		void Update ()
-		{
-			
-		}
-        #endregion
+   
 
         #region 事件回调
         public override void OnSpawn()
@@ -126,7 +116,6 @@ namespace FBApplication
         protected virtual void OnDie(FBRole role) {}
         #endregion
 
-        #region 帮助方法
-        #endregion
+      
     }
 }

@@ -27,12 +27,6 @@ namespace FBApplication
 {
 	public class FBUIBoard : FBView
 	{
-        #region 常量
-        #endregion
-
-        #region 事件
-        #endregion
-
         #region 字段
         [SerializeField]
         private Text txtScore;
@@ -72,7 +66,6 @@ namespace FBApplication
             set
             {
                 f_gold = value;
-
                 txtScore.text = value.ToString();
             }
         }
@@ -121,25 +114,14 @@ namespace FBApplication
         #endregion
 
         #region 事件回调
+
+        public override void RegisterEvents() { }
+
         public override void HandleEvent(string eventName, object data = null)
-        {
-            //switch(eventName)
-            //{
-                //case FBConsts.E_CountDownComplete:
-                //    FBGame.Instance.LoadScene(4);
-                //    break;
-            //}
-        }
+        {}
         #endregion
 
         #region 方法
-        public override void RegisterEvents()
-        {
-         
-            ////注册事件
-            //EventLists.Add(FBConsts.E_CountDownComplete);
-        }
-
         private void OnSpeed1Click()
         {
             Speed = GameSpeed.Two;
@@ -163,7 +145,7 @@ namespace FBApplication
 
         private void OnSystemClick()
         {
-            throw new NotImplementedException();
+            
         }
 
         private void UpdateRoundInfo(int currentRound,int total)

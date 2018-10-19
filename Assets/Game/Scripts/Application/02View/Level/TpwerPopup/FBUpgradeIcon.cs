@@ -37,11 +37,9 @@ namespace FBApplication
 
         void OnMouseDown()
         {
-            //if (f_tower.IsTopLevel)
-            //    return;
+            if (f_tower.IsTopLevel)
+                return;
 
-            //FBUpgradeTowerArgs args = new FBUpgradeTowerArgs() { Tower = f_tower };
-            //SendMessageUpwards("OnUpgradeTower", args, SendMessageOptions.RequireReceiver);
             SendMessageUpwards("OnUpgradeTower", f_tower, SendMessageOptions.RequireReceiver);
         }
         #endregion

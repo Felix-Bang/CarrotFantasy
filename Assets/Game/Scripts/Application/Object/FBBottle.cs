@@ -12,8 +12,8 @@
 //　 ヽ_ﾉ　　(_／　 │／／
 //　　7　　　　　　　|／
 //　　＞―r￣￣`ｰ―＿
-// Describe：
-// Createtime：
+// Describe：瓶子炮塔
+// Createtime：2018/10/18
 
 using System.Collections;
 using System.Collections.Generic;
@@ -23,41 +23,35 @@ namespace FBApplication
 {
 	public class FBBottle : FBTower
 	{
-		#region 常量
-        #endregion
+        Transform f_shotPoint;
 
-        #region 事件
-        #endregion
-
-        #region 字段
-        #endregion
-
-        #region 属性
-        #endregion
-
-
-        #region 事件回调
-        #endregion
+        protected override void Awake()
+        {
+            base.Awake();
+            f_shotPoint = transform.Find("ShotPoint");
+        }
 
         #region 方法
-        protected override void Attack()
+        protected override void Shot(FBMonster monster)
         {
+            base.Shot(monster);
+
             if (f_animator.gameObject.activeSelf)
                 f_animator.SetTrigger("IsAttack");
+
+            GameObject go = FBGame.Instance.ObjectPool.Spawn("BallBullet");
+            FBBallBullet bullet = go.GetComponent<FBBallBullet>();
+            bullet.transform.position = f_shotPoint.position;
+            bullet.Load(UseBulletID, Level, MapRect, monster);
         }
 
         public override void OnSpawn()
         {
             base.OnSpawn();
+            f_animator.Play("Bottle_Idle");
         }
 
-        public override void OnUnspawn()
-        {
-            base.OnUnspawn();
-        }
-        #endregion
-
-        #region 帮助方法
+     
         #endregion
     }
 }

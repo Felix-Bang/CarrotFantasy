@@ -27,13 +27,6 @@ namespace FBApplication
 {
 	public class FBUIWin : FBView
 	{
-
-        #region 常量
-        #endregion
-
-        #region 事件
-        #endregion
-
         #region 字段
         [SerializeField]
         private Text txtCurrent;

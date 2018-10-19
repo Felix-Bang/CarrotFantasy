@@ -27,13 +27,6 @@ namespace FBApplication
 {
 	public class FBUILost : FBView
 	{
-
-        #region 常量
-        #endregion
-
-        #region 事件
-        #endregion
-
         #region 字段
         [SerializeField]
         private Text txtCurrent;
@@ -63,8 +56,7 @@ namespace FBApplication
 
         private void Start()
         {
-            btnRestart.onClick.AddListener(OnRestartClick);
-          
+            btnRestart.onClick.AddListener(OnRestartClick);          
         }
 
        

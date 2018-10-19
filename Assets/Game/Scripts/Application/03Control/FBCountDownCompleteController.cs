@@ -26,6 +26,10 @@ namespace FBApplication
 	{
         public override void Execute(object data = null)
         {
+            //游戏开始
+            FBGameModel gameModel = GetModel<FBGameModel>();
+            gameModel.IsPlaying = true;
+
             //出怪
             FBRoundModel roundModel = GetModel<FBRoundModel>();
             roundModel.StartRound();

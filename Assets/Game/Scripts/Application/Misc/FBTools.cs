@@ -137,6 +137,16 @@ namespace FBApplication
 
             string content = sb.ToString();
 
+            XmlWriterSettings settings = new XmlWriterSettings
+            {
+                Indent = true,
+                ConformanceLevel = ConformanceLevel.Auto,
+                IndentChars = "\t",
+                OmitXmlDeclaration = false
+            };
+
+            XmlWriter xw = XmlWriter.Create(fileName, settings);
+
             StreamWriter sw = new StreamWriter(fileName, false, Encoding.UTF8);
             sw.Write(content);
             sw.Flush();

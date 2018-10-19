@@ -70,8 +70,7 @@ namespace FBApplication
             //加载图片
             string cardFile = "file://" + FBConsts.CardsDir +"\\"+ f_card.CardImage;
             StartCoroutine(FBTools.LoadImage(cardFile,imgCard));
-            //设置透明度
-            //IsTransparent = card.IsLocked;
+         
             //是否锁定
             imgLock.gameObject.SetActive(f_card.IsLocked);
         }

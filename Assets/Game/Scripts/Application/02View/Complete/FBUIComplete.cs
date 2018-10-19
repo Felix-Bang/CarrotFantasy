@@ -27,13 +27,6 @@ namespace FBApplication
 {
 	public class FBUIComplete : FBView
 	{
-
-        #region 常量
-        #endregion
-
-        #region 事件
-        #endregion
-
         #region 
         [SerializeField]
         private Button btnRestart;
@@ -56,8 +49,7 @@ namespace FBApplication
      
 
         private void Start()
-        {
-            
+        {           
             btnRestart.onClick.AddListener(OnRestartClick);
             btnClear.onClick.AddListener(OnClearClick);
         }
@@ -87,20 +79,10 @@ namespace FBApplication
 
         private void OnClearClick()
         {
-            Debug.Log("清空数据");
             FBGameModel gameModel = GetModel<FBGameModel>();
             gameModel.ClearProgress();
         }
         #endregion
-
-        #region 帮助方法
-        #endregion
-
-
-
-
-
-
     }
 }
 

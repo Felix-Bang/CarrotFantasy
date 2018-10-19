@@ -33,15 +33,9 @@ namespace FBApplication
         #region 属性
         public override string Name
         {
-            get
-            {
-                return FBConsts.V_Spawner;
-            }
+            get { return FBConsts.V_Spawner; }
         }
-
         #endregion
-
- 
 
         #region 事件回调
         public override void RegisterEvents()
@@ -68,6 +62,44 @@ namespace FBApplication
                     break;
             }
         }
+
+        private void OnMapGridClick(object sender, FBGridClickEventArgs e)
+        {
+            FBGameModel game = GetModel<FBGameModel>();
+
+            //游戏还未开始，那么不操作菜单
+            if (!game.IsPlaying)
+                return;
+
+            //如果有菜单显示，那么隐藏菜单
+            if (FBUITowerPopup.Instance.IsPopShow)
+            {
+                SendEvent(FBConsts.E_TowerHide);
+                return;
+            }
+
+            FBGrid grid = e.Grid;
+            if (!grid.CanHold)
+            {
+                SendEvent(FBConsts.E_TowerHide);
+                return;
+            }
+
+            if (grid.Data == null)
+            {
+                FBShowTowerCreatArgs args = new FBShowTowerCreatArgs()
+                {
+                    Position = f_map.GetPosition(grid),
+                    UpSide = grid.Index_Y < FBMap.RowCount / 2
+                };
+                SendEvent(FBConsts.E_ShowTowerCreat, args);
+            }
+            else
+            {
+                FBShowTowerUpgradeArgs args = new FBShowTowerUpgradeArgs() { Tower = grid.Data as FBTower };
+                SendEvent(FBConsts.E_ShowTowerUpgrade, args);
+            }
+        }
         #endregion
 
         #region 方法
@@ -75,43 +107,16 @@ namespace FBApplication
         {
             if (args.Index == 3)
             {
-                //获取数据
-                FBGameModel gameModel = GetModel<FBGameModel>();
-                //加载地图
                 f_map = GetComponent<FBMap>();
                 f_map.OnFBGridClick += OnMapGridClick;
+                //获取数据
+                FBGameModel gameModel = GetModel<FBGameModel>();
                 f_map.LoadLevel(gameModel.PlayLevel);
-            }
 
-            GameObject go = FBGame.Instance.ObjectPool.Spawn("Carrot");
-            f_carrot = go.GetComponent<FBCarrot>();
-            f_carrot.transform.position = f_map.Path[f_map.Path.Length - 1];
-            f_carrot.DeadAction += CarrotDead;
-        }
-
-        private void OnMapGridClick(object sender, FBGridClickEventArgs e)
-        {           
-            FBGameModel game = GetModel<FBGameModel>();
-            FBGrid grid = e.Grid;
-            if (game.IsPlaying && grid.CanHold)
-            {              
-                if (grid.Data == null)
-                {                 
-                    FBShowTowerCreatArgs args = new FBShowTowerCreatArgs()
-                    {
-                        Position = f_map.GetPosition(grid),
-                        UpSide = grid.Index_Y < FBMap.RowCount / 2
-                    };
-                    SendEvent(FBConsts.E_ShowTowerCreat,args);
-                }
-                else
-                {
-                    Debug.Log("Click Map05");
-                    FBTower tower = grid.Data as FBTower;
-                    FBShowTowerUpgradeArgs args = new FBShowTowerUpgradeArgs() { Tower = tower };
-                    SendEvent(FBConsts.E_ShowTowerUpgrade, args);
-                }
-
+                GameObject go = FBGame.Instance.ObjectPool.Spawn("Carrot");
+                f_carrot = go.GetComponent<FBCarrot>();
+                f_carrot.transform.position = f_map.Path[f_map.Path.Length - 1];
+                f_carrot.DeadAction += CarrotDead;
             }
         }
 
@@ -122,11 +127,9 @@ namespace FBApplication
        
             GameObject go= FBGame.Instance.ObjectPool.Spawn(monsterName);
             FBMonster monster = go.GetComponent<FBMonster>();
-
             monster.HPChangedAction += MonsterHPChanged;
             monster.DeadAction += MonsterDead;
-            monster.ReachedAction += MonSterReched;
-                
+            monster.ReachedAction += MonSterReched;                
             monster.OnLoad(f_map.Path);
         }
 
@@ -135,18 +138,18 @@ namespace FBApplication
             //创建Tower
             FBTowerInfo info = FBGame.Instance.StaticData.GetTower(args.TowerID);
             GameObject go = FBGame.Instance.ObjectPool.Spawn(info.PrefabName);
-            //go.transform.position = args.Position;
+      
             FBTower tower = go.GetComponent<FBTower>();
             tower.transform.position = args.Position;
 
             //Tile里放入Tower信息
             FBGrid tile = f_map.GetGrid(args.Position);
-            //tile.Data = tower;
 
             ////初始化Tower
-            tower.Load(args.TowerID, tile);
-        }
+            tower.Load(args.TowerID, tile,f_map.MapRect);
 
+            tile.Data = tower;
+        }
 
         private void MonsterHPChanged(int arg1, int arg2)
         {
@@ -185,10 +188,6 @@ namespace FBApplication
             FBGameModel gameModel = GetModel<FBGameModel>();
             SendEvent(FBConsts.E_LevelEnd, new FBEndLevelArgs() { ID = gameModel.PlayLevelIndex, IsWin = false });
         }
-
-        #endregion
-
-        #region 帮助方法
         #endregion
     }
 }

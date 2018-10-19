@@ -41,11 +41,6 @@ namespace FBApplication
             if (!f_enough)
                 return;
 
-            //FBSpawnTowerArgs args = new FBSpawnTowerArgs()
-            //{
-            //    Position = f_creatPos,
-            //    TowerID = f_towerInfo.ID
-            //};
             int id = f_towerInfo.ID;
             Vector3 pos = f_creatPos;
             object[] args = { id, pos };

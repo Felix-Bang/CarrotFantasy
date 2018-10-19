@@ -26,9 +26,9 @@ namespace FBApplication
     {
         public override void Execute(object data = null)
         {
-            //FBUpgradeTowerArgs e = data as FBUpgradeTowerArgs;
-            //FBTower tower = e.Tower;
-            //tower.Level++;
+            FBUpgradeTowerArgs e = data as FBUpgradeTowerArgs;
+            FBTower tower = e.Tower;
+            tower.Level++;
         }
 	}
 }
